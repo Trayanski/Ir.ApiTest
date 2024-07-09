@@ -1,8 +1,8 @@
 using System;
 
-namespace Ir.IntegrationTest.Contracts
+namespace Ir.ApiTest.Contracts
 {
-  public class Product
+  public class ProductDto : IBaseDto
   {
     public string Id { get; set; }
     public string Size { get; set; }

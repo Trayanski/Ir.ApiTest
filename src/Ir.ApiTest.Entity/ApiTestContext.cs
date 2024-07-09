@@ -1,14 +1,14 @@
-﻿using Ir.IntegrationTest.Entity.Models;
+﻿using Ir.ApiTest.Entity.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Ir.IntegrationTest.Entity;
+namespace Ir.ApiTest.Entity;
 
-public class Context : DbContext
+public class ApiTestContext : DbContext
 {
   #region Public Constructors
 
-  public Context(DbContextOptions<Context> options) : base(options)
+  public ApiTestContext(DbContextOptions<ApiTestContext> options) : base(options)
   {
   }
 
