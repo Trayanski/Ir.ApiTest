@@ -12,18 +12,18 @@ public class ProductRepository : BaseRepository<Product, ProductDto>
 
   #region AutoMapper wannaby methods
 
-  public override ProductDto MapToDto(Product entity)
+  public override ProductDto MapToDto(Product model)
   {
     return new ProductDto
     {
-      Id = entity.Id,
-      Size = entity.Size,
-      Colour = entity.Colour,
-      Name = entity.Name,
-      Price = entity.Price,
-      LastUpdated = entity.LastUpdated,
-      Created = entity.Created,
-      Hash = entity.Hash
+      Id = model.Id,
+      Size = model.Size,
+      Colour = model.Colour,
+      Name = model.Name,
+      Price = model.Price,
+      LastUpdated = model.LastUpdated,
+      Created = model.Created,
+      Hash = model.Hash
     };
   }
 

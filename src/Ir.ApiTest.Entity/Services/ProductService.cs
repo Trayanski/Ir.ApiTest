@@ -14,11 +14,11 @@ public class ProductService : IProductService
     m_repository = repository;
   }
 
-  public async Task<string> AddAsync(ProductDto entity) => await m_repository.AddAsync(entity);
+  public async Task<string> AddAsync(ProductDto dto) => await m_repository.AddAsync(dto);
   public Task DeleteAsync(string id) => m_repository.DeleteAsync(id);
   public Task<IEnumerable<ProductDto>> GetAllAsync() => m_repository.GetAllAsync();
   public Task<ProductDto> GetByIdAsync(string id) => m_repository.GetByIdAsync(id);
-  public Task UpdateAsync(ProductDto entity) => m_repository.UpdateAsync(entity);
-  public ProductDto MapToDto(Product entity) => m_repository.MapToDto(entity);
-  public Product MapToModel(ProductDto entity) => m_repository.MapToModel(entity);
+  public Task UpdateAsync(ProductDto dto) => m_repository.UpdateAsync(dto);
+  public ProductDto MapToDto(Product model) => m_repository.MapToDto(model);
+  public Product MapToModel(ProductDto dto) => m_repository.MapToModel(dto);
 }

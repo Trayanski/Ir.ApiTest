@@ -17,9 +17,9 @@ public interface IBaseRepository<IModel, IDto>
 
   #region AutoMapper wannaby methods
 
-  IDto MapToDto(IModel entity);
+  IDto MapToDto(IModel model);
 
-  IModel MapToModel(IDto entity);
+  IModel MapToModel(IDto dto);
 
   #endregion AutoMapper wannaby methods
 }

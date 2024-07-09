@@ -31,7 +31,7 @@ public class ApiTestContext : DbContext
 
   private void ConfigureProduct(EntityTypeBuilder<Product> product)
   {
-    product.ToTable("Product");
+    product.ToTable(nameof(Product));
     product.HasKey(x => x.Id);
     product
       .Property(x => x.Created)
