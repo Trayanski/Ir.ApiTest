@@ -16,6 +16,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ir.ApiTest.Contracts", "src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ir.ApiTest.Entity", "src\Ir.ApiTest.Entity\Ir.ApiTest.Entity.csproj", "{8BC13679-D84F-4884-AF8F-B411A4469187}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ir.ApiTest.Test", "Ir.ApiTest.Test\Ir.ApiTest.Test.csproj", "{C0E998F0-13DF-4C80-8ACF-2CAC9D112EFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ir.ApiTest.Entity.Test", "Ir.ApiTest.Entity.Test\Ir.ApiTest.Entity.Test.csproj", "{9BF51DE2-0A17-4208-A469-3AE5BC543524}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,6 +38,14 @@ Global
 		{8BC13679-D84F-4884-AF8F-B411A4469187}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8BC13679-D84F-4884-AF8F-B411A4469187}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8BC13679-D84F-4884-AF8F-B411A4469187}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0E998F0-13DF-4C80-8ACF-2CAC9D112EFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0E998F0-13DF-4C80-8ACF-2CAC9D112EFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0E998F0-13DF-4C80-8ACF-2CAC9D112EFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0E998F0-13DF-4C80-8ACF-2CAC9D112EFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BF51DE2-0A17-4208-A469-3AE5BC543524}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BF51DE2-0A17-4208-A469-3AE5BC543524}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BF51DE2-0A17-4208-A469-3AE5BC543524}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BF51DE2-0A17-4208-A469-3AE5BC543524}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
