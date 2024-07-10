@@ -2,8 +2,16 @@
 
 Trayan Karastoyanov: I like that you use markdown files. Comparing word files is such a hassle.
 	I would like to work more on the validation. In general.
-	I can add integration tests in a transaction scope for end to end testing.
+	More unit tests must be added to improve the code coverage.
+        I can add some integration tests in a transaction scope for end to end testing.
 	I didn't use Automapper because it doesn't fix any issues.
+        Ideally the test projects should be located in their "Test" folders and the main projects should be stored in a "Main" folder.
+        "In the email returning the test please send with it with one of your favourite TV shows." - I mentioned it in our initial call "The Farm".
+                It's a Bulgarian TV show that tests the participants physique and intelectual skills to overcome team challenges.
+                If one performs poorly the group kicks him out and the last one wins a price.
+                https://www.instagram.com/fermata.btv/?hl=en
+                PS: There was one participant that has a business that involves around the "kanban" method and I got hooked from watching him implement it in the show. (you mentioned that you use this method)
+                This is him https://www.linkedin.com/in/dimitar-karaivanov/
 
 # Introduction
 
