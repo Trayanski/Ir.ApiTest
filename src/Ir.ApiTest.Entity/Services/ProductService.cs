@@ -14,11 +14,28 @@ public class ProductService : IProductService
     m_repository = repository;
   }
 
-  public async Task<string> AddAsync(ProductDto dto) => await m_repository.AddAsync(dto);
+  public async Task<string> AddAsync(ProductDto dto)
+  {
+    dto.LastUpdated = DateTime.Now;
+    dto.Created = DateTime.Now;
+    return await m_repository.AddAsync(dto);
+  }
+
   public Task DeleteAsync(string id) => m_repository.DeleteAsync(id);
   public Task<IEnumerable<ProductDto>> GetAllAsync() => m_repository.GetAllAsync();
   public Task<ProductDto> GetByIdAsync(string id) => m_repository.GetByIdAsync(id);
-  public Task UpdateAsync(ProductDto dto) => m_repository.UpdateAsync(dto);
+  public async Task UpdateAsync(ProductDto dto)
+  {
+    var existingEntityDto = await GetByIdAsync(dto.Id);
+    if (existingEntityDto == null)
+      // TODO: I should create a custom NotFoundException and throw that instead.
+      throw new TaskCanceledException($"Product with ID '{dto.Id}' not found.");
+
+    dto.Created = existingEntityDto.Created;
+    dto.LastUpdated = DateTime.Now;
+    await m_repository.UpdateAsync(dto);
+  }
+
   public ProductDto MapToDto(Product model) => m_repository.MapToDto(model);
   public Product MapToModel(ProductDto dto) => m_repository.MapToModel(dto);
 }

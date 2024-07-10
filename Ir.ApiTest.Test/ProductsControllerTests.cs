@@ -10,7 +10,7 @@ namespace Ir.ApiTest.Test;
 [TestClass]
 public class ProductsControllerTests
 {
-  [TestMethod, TestCategory("IntegrationTest")]
+  [TestMethod, TestCategory("UnitTest")]
   public async Task GetProducts_HappyDay_Successful()
   {
     // Arragne

@@ -1,5 +1,9 @@
 # Intelligent Reach API Test  
 
+Trayan Karastoyanov: I like that you use markdown files. Comparing word files is such a hassle.
+	I would like to work more on the validation. In general.
+	I can add integration tests in a transaction scope for end to end testing.
+	I didn't use Automapper because it doesn't fix any issues.
 
 # Introduction
 

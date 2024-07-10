@@ -88,15 +88,116 @@ public class ProductServiceTests
   {
     // Arange
     const string c_productId = "ProductId";
+    DateTime expectedLastUpdated = DateTime.Now;
+    DateTime expectedCreated = DateTime.Now.AddDays(-1);
     var repositoryMock = new Mock<IBaseRepository<Product, ProductDto>>();
+    var productDto = new ProductDto
+    {
+      Id = c_productId,
+      Created = expectedCreated,
+      LastUpdated = expectedLastUpdated.AddDays(-1)
+    };
+    repositoryMock
+      .Setup(x => x.GetByIdAsync(c_productId))
+      .ReturnsAsync(productDto);
+    repositoryMock
+      .Setup(x => x.UpdateAsync(productDto));
+    var productService = new ProductService(repositoryMock.Object);
+
+    // Act
+    await productService.UpdateAsync(productDto);
+
+    // Assert
+    Assert.AreEqual(expectedCreated, productDto.Created);
+    Assert.AreEqual(expectedLastUpdated.Year, productDto.LastUpdated.Year);
+    Assert.AreEqual(expectedLastUpdated.Month, productDto.LastUpdated.Month);
+    Assert.AreEqual(expectedLastUpdated.Day, productDto.LastUpdated.Day);
+  }
+
+  [TestMethod, TestCategory("UnitTest")]
+  public async Task UpdateAsync_EntryDoesNotExist_Throws()
+  {
+    // Arange
+    const string c_productId = "ProductId";
+    var repositoryMock = new Mock<IBaseRepository<Product, ProductDto>>();
+    repositoryMock
+      .Setup(x => x.GetByIdAsync(c_productId))
+      .ReturnsAsync((ProductDto)null);
     var productDto = new ProductDto { Id = c_productId };
     repositoryMock
       .Setup(x => x.UpdateAsync(productDto));
     var productService = new ProductService(repositoryMock.Object);
 
     // Act
-    // Assert
+    var action = async () => await productService.UpdateAsync(productDto);
+
+    // Assert (verify exception is thrown)
+    await Assert.ThrowsExceptionAsync<TaskCanceledException>(action, $"Product with ID '{productDto.Id}' not found.");
+  }
+
+  [TestMethod, TestCategory("UnitTest")]
+  public async Task UpdateAsync_AlteredCreated_Success()
+  {
+    // Arange
+    const string c_productId = "ProductId";
+    DateTime expectedCreated = DateTime.Now.AddDays(-1);
+    DateTime alteredCreated = DateTime.Now;
+    var repositoryMock = new Mock<IBaseRepository<Product, ProductDto>>();
+    repositoryMock
+      .Setup(x => x.GetByIdAsync(c_productId))
+      .ReturnsAsync(new ProductDto
+      {
+        Id = c_productId,
+        Created = expectedCreated,
+      });
+    var productDto = new ProductDto
+    {
+      Id = c_productId,
+      Created = alteredCreated,
+    };
+    repositoryMock
+      .Setup(x => x.UpdateAsync(productDto));
+    var productService = new ProductService(repositoryMock.Object);
+
+    // Act
     await productService.UpdateAsync(productDto);
+
+    // Assert
+    Assert.AreEqual(expectedCreated, productDto.Created);
+  }
+
+  [TestMethod, TestCategory("UnitTest")]
+  public async Task UpdateAsync_AlteredLastUpdated_Success()
+  {
+    // Arange
+    const string c_productId = "ProductId";
+    DateTime previouslyStoredLastUpdated = DateTime.Now.AddDays(-1);
+    DateTime expectedLastUpdated = DateTime.Now;
+    DateTime alteredLastUpdated = DateTime.Now.AddDays(1);
+    var repositoryMock = new Mock<IBaseRepository<Product, ProductDto>>();
+    repositoryMock
+      .Setup(x => x.GetByIdAsync(c_productId))
+      .ReturnsAsync(new ProductDto
+      {
+        Id = c_productId,
+        LastUpdated = previouslyStoredLastUpdated,
+      });
+    var productDto = new ProductDto
+    {
+      Id = c_productId,
+      LastUpdated = alteredLastUpdated,
+    };
+    repositoryMock
+      .Setup(x => x.UpdateAsync(productDto));
+    var productService = new ProductService(repositoryMock.Object);
+
+    // Act
+    await productService.UpdateAsync(productDto);
+
+    // Assert
+    Assert.AreEqual(expectedLastUpdated.Year, productDto.LastUpdated.Year);
+    Assert.AreEqual(expectedLastUpdated.Month, productDto.LastUpdated.Month);
+    Assert.AreEqual(expectedLastUpdated.Day, productDto.LastUpdated.Day);
   }
 
   [TestMethod, TestCategory("UnitTest")]
